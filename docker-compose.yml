@@ -1,0 +1,18 @@
+# docker-compose version
+version: "3"
+
+# Service called app
+# Build section, set context to current directory (.)
+# Port maps local port to docker port
+# Volume automatically updates docker container every change
+services:
+    app:
+        build:
+            context: .
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./app:/app
+        command: >
+            sh -c "python manage.py runserver 0.0.0.0:8000"
+
